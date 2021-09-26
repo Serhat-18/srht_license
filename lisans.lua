@@ -2,7 +2,7 @@ local REDLOG = "WEBHOOK_HERE" -- LOG WEBHOOK LISANSSIZ
 local ONAYLOG = "WEBHOOK_HERE" -- LOG WEBHOOK LISANSLI
 PerformHttpRequest('https://api.ipify.org', function(err, text, headers) 
     if text == 'IP_ADRESI' then -- BU ALANA LISANSLANAN IP KOYULACAK 
-      print('^2 LISANS ONAYLANDI HOSGELDINIZ\n ^1- HS_DEVELOPMENTS -^0')
+      print('^2 LISANS ONAYLANDI HOSGELDINIZ\n ^1- SRHT_DEVELOPMENTS -^0')
       local serveradi = GetConvar("sv_hostname","Bulunamadı.")
       OnayLog("[LISANS ONAYLANDI]", "**Sunucu Bilgileri:**\n\n**[Sunucu Adı] = ** " .. serveradi .. "\n\n**[SUNUCU IP] = **" .. text .. "")
  
