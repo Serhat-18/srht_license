@@ -1,9 +1,3 @@
---[[
-
- GÜNCELLEME İÇİN spex#8373 TEŞEKKÜRLER
-]]
-
-
 local REDLOG = "WEBHOOK_HERE" -- LOG WEBHOOK LISANSSIZ
 local ONAYLOG = "WEBHOOK_HERE" -- LOG WEBHOOK LISANSLI
 PerformHttpRequest('https://api.ipify.org', function(err, text, headers) 
